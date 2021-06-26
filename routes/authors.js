@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
     } catch {
         res.render('authors/new', { 
             author: author,
-            errorMessage : `something went wrong`
+            errorMessage : `something went wrong` 
         })
     }
 })
