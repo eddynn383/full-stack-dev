@@ -18,21 +18,23 @@ const upload = multer({
 
 router.get('/', async (req, res) => {
     let query = Book.find();
-    if (req.query.title != null && req.query.title !== '') {
+    if (req.query.title != null && req.query.title != '') {
         query = query.regex('title', new RegExp(req.query.title, 'i'))
     }
-    if (req.query.publishedBefore != null && req.query.publishedBefore !== '') {
+    if (req.query.publishedBefore != null && req.query.publishedBefore != '') {
         query = query.lte('publishDate', new RegExp(req.query.publishedBefore))
     }
-    if (req.query.publishedAfter != null && req.query.publishedAfter !== '') {
+    if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
         query = query.gte('publishDate', new RegExp(req.query.publishedAfter))
     }
+    console.log(query);
     try {
         const books = await query.exec();
+        console.log(books);
         res.render('books/index', {
             books: books, 
             searchOptions: req.query
-        });   
+        });
     } catch {
         res.redirect('/')
     }
@@ -56,9 +58,11 @@ router.post('/', upload.single('cover'), async (req, res) => {
         coverImageName: fileName,
         description: req.body.description
     })
+    console.log(book.publishDate)
     try {
         const newBook = await book.save();
         // res.redirect(`books/${newBook.id}`);
+        console.log(book);
         res.redirect('books');
     } catch {
         if (book.coverImageName != null) {
@@ -81,7 +85,7 @@ async function renderNewPage(res, book, hasError = false) {
             authors: authors,
             book: book
         }
-        console.log(params);
+        // console.log(params);
         if(hasError) params.errorMessage = "Error creating book!"
         res.render('books/new', params);
     } catch {

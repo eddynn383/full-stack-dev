@@ -6,16 +6,21 @@
     </div>
     <div>
         <label>Publish After</label>
-        <input type="date" name="publishAfter" value="<%= searchOptions.publishAfter %> ">
+        <input type="date" name="publishedAfter" value="<%= searchOptions.publishedAfter %> ">
     </div>
     <div>
         <label>Publish Before</label>
-        <input type="date" name="publishBefore" value="<%= searchOptions.publishBefore %> ">
+        <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %> ">
     </div>
     <button type="submit">Search</button>
 </form>
 <div>
 <% books.forEach(book => { %> 
+    <h2><%= book.title %></h2>
+    <!-- <p><%= book.author %></p> -->
+    <p><%= book.publishDate %></p>
+    <!-- <p><%= book.pageCount %></p> -->
     <img height="150px" src="<%= book.coverImagePath %> ">
+    <!-- <p><%= book.description %></p> -->
 <% }) %> 
 </div>
