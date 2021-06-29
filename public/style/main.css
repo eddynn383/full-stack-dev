@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap');
+
+:root {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 18px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #252525;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 48px;
+}
+
+h3 {
+    font-size: 34px;
+}
+
+h4 {
+    font-size: 28px;
+}
+
+a:hover {
+    color: #5055e8;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 3px;
+    background-color: #5f68ab;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #4e558f;
+    color: #fff;
+}
+
+.btn--dark {
+    background-color: rgb(70 70 70);
+    color: #fff;
+}
+
+.btn--dark:hover {
+    background-color: rgb(47 47 47);
+    color: #fff;
+}
+
+.btn--delete {
+    background-color: #ce2d2d;
+}
+
+.btn--delete:hover {
+    background-color: #982323;
+}
+
+.layout {
+    padding-top: 100px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    padding: 15px 0;
+    background-color: #191919;
+    box-shadow: 0 0 10px rgba(12, 12, 12, 0.4);
+    z-index: 10;
+}
+
+header .header_inner {
+    display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+header .header_logo {
+    display: inline-block;
+    width: 100px;
+}
+
+header .header_logo img {
+    max-width: 100%;
+}
+
+header .header_logo span {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    text-align: center;
+}
+
+header .nav--main {
+    width: calc(100% - 100px);
+}
+
+header .nav--main ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+header .nav--main li {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+header .nav--main li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+header .nav--main li a:hover {
+    color: #5055e8;
+}
+
+.banner {
+    background-image: url('../assets/banner.jpg');
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    z-index: 1;
+}
+
+.banner:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(12, 12, 12, 0.6);
+    z-index: -1;
+}
+
+.content_inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.form {
+    background-color: #191919;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.form form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: calc(33.33% - 40px);
+}
+
+.form label {
+    display: block;
+    width: 100%;
+    color: #fff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.form input {
+    width: calc(100% - 110px);
+    border: 0;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 3px;
+}
+
+.form button {
+    border: 0;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #5f68ab;
+    color: #fff;
+}
+
+.boxes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    padding: 40px 0;
+}
+
+.box {
+    width: 33.33%;
+    padding-left: 20px;
+}
+
+.box_inner {
+    background-color: #191919;
+    border-radius: 10px;
+    padding: 20px;
+    height: 100%;
+    min-height: 250px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.box_title {
+    width: 100%;
+    margin-top: 0;
+    color: #fff;
+    font-size: 30px;
+}
+
+.box_btn {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.box_btn + .box_btn {
+    padding-left: 10px;
+}
+
+
+
