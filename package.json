@@ -16,8 +16,7 @@
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.1",
     "fs": "0.0.1-security",
-    "mongoose": "^5.12.15",
-    "multer": "^1.4.2"
+    "mongoose": "^5.12.15"
   },
   "devDependencies": {
     "dotenv": "^10.0.0",
