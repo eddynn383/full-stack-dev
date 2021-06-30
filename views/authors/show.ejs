@@ -1,7 +1,7 @@
 <section class="banner">
     <h1>Author Details</h1>
 </section>
-<section class="content">
+<section class="content content--details">
     <div class="content_inner">
         <div class="boxes">
             <div class="box">
@@ -16,19 +16,33 @@
                     <div class="box_desc">
                         <p><%= author.description %> </p>
                     </div>
+                    <div class="box_btns">
+                        <div class="box_btn">
+                            <a href="/authors/<%= author.id %>/edit" class="btn btn--primary">Edit</a>
+                        </div>
+                        <div class="box_btn">
+                            <%- include('../partials/deleteForm', { url: `/authors/${author.id}`, type: 'author'}) %> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="/authors/<%= author.id %>/edit">Edit</a>
-        <%- include('../partials/deleteForm', { url: `/authors/${author.id}`, type: 'author'}) %> 
-        <% if(booksByAuthor.length > 0) { %> 
-            <h2>Books by author</h2>
-            <% booksByAuthor.forEach(book => { %> 
-                <h3><%= book.title %></h3>
-                <a href="/books/<%= book.id %> ">
-                    <img width="100px" height="150px" src="<%= book.coverImagePath %> ">
-                </a>
-            <% }) %>
-        <% } %> 
+        <div class="slider">
+            <% if(booksByAuthor.length > 0) { %> 
+                <h4>Books by author</h4>
+                <div class="slider_items">
+                    <% booksByAuthor.forEach(book => { %> 
+                        <div class="slider_item">
+                            <div class="slider_item-inner">
+                                <a href="/books/<%= book.id %> ">
+                                    <img src="<%= book.coverImagePath %>" alt="cover">
+                                </a>
+                            </div>
+
+                        </div>
+                    <% }) %>
+                </div>
+            <% } %> 
+        </div>
     </div>
 </div>

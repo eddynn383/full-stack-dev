@@ -155,11 +155,12 @@ header .nav--main li a:hover {
 
 .banner {
     background-image: url('../assets/banner.jpg');
-    background-repeat: none;
+    background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     position: relative;
     height: 450px;
+    padding: 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,6 +201,13 @@ header .nav--main li a:hover {
     margin-right: -.25em;
 }
 
+@media only screen and (max-width: 1024px) {
+    .content_left,
+    .content_right {
+        width: 100%;
+    }
+}
+
 .form {
     border-radius: 10px;
     margin-top: 40px;
@@ -212,7 +220,8 @@ header .nav--main li a:hover {
 }
 
 .form .form_box {
-    width: 50%;
+    width: 100%;
+    max-width: 1024px;
     background-color: #2f2f2f;
     padding: 20px;
     border-radius: 10px;
@@ -301,6 +310,13 @@ header .nav--main li a:hover {
     margin-left: 0;
 }
 
+@media only screen and (max-width: 1024px) {
+    .boxes.content_right {
+        margin-left: -20px;
+        width: calc(100% + 20px);
+    }
+}
+
 .box {
     padding-left: 20px;
     margin-bottom: 20px;
@@ -331,6 +347,30 @@ header .nav--main li a:hover {
     width: 20%;
 }
 
+@media only screen and (max-width: 768px) {
+    .box--1of3,
+    .card--1of3,
+    .box--1of4,
+    .card--1of4,
+    .box--1of5,
+    .card--1of5 {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .box--1of2,
+    .card--1of2,
+    .box--1of3,
+    .card--1of3,
+    .box--1of4,
+    .card--1of4,
+    .box--1of5,
+    .card--1of5 {
+        width: 100%;
+    }
+}
+
 .box_left {
     display: inline-block;
     vertical-align: top;
@@ -344,6 +384,26 @@ header .nav--main li a:hover {
     width: 80%;
     margin-right: -.25em;
     padding-left: 40px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .box_left {
+        width: 40%;
+    }
+    .box_right {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .box_left {
+        display: block;
+        width: auto;
+    }
+    .box_right {
+        width: 100%;
+        padding-left: 0;
+    }
 }
 
 .box_inner {
@@ -410,6 +470,12 @@ header .nav--main li a:hover {
 .box_image {
     border-radius: 10px;
     overflow: hidden;
+}
+
+@media only screen and (max-width: 768px) {
+    .box_image {
+        margin-bottom: 20px;
+    }
 }
 
 .box_image img {
@@ -497,6 +563,13 @@ header .nav--main li a:hover {
     margin-left: 0;
 }
 
+@media only screen and (max-width: 1024px) {
+    .cards.content_right {
+        margin-left: -20px;
+        width: calc(100% + 20px);
+    }
+}
+
 .card {
     padding-left: 20px;
     padding-bottom: 20px;
@@ -515,6 +588,35 @@ header .nav--main li a:hover {
     height: 100%;
 }
 
+.card:not(.card--more) .card_inner a {
+    display: block;
+    position: relative;
+}
+
+.card:not(.card--more) .card_inner a:before {
+    content: "View";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(25, 25, 25, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease-in-out;
+}
+
+.card:not(.card--more) .card_inner a:hover:before {
+    opacity: 1;
+    visibility: visible;
+}
+
 .card img {
     vertical-align: top;
 }
@@ -525,6 +627,7 @@ header .nav--main li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 200px;
 }
 
 .card_more > a {
@@ -534,11 +637,84 @@ header .nav--main li a:hover {
     width: 60px;
     height: 60px;
     padding: 10px;
-    background-color: #5f68ab;
+    background-color: var(--color-primary);
     border-radius: 50%;
     color: #fff;
     line-height: 1;
     box-shadow: 0 0 10px rgba(25, 25, 25, 0.5);
+}
+
+.content--details .boxes {
+    background-color: #212121;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 0;
+    border-radius: 10px;
+}
+
+.content--details .box {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.slider .slick-list {
+    margin-left: -20px;
+}
+
+.slider .slider_items {
+    padding: 0 80px;
+}
+
+.slider .slider_item-inner {
+    padding-left: 20px;
+}
+
+.slider .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+}
+
+.slider .slick-arrow:before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "fontello";
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+    line-height: 1;
+    color: #fff;
+    padding: 16px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+
+.slider .slick-arrow:hover:before {
+    background-color: #4e558f;
+}
+
+.slider .slick-prev {
+    left: 0;
+}
+
+.slider .slick-next {
+    right: 0;
+}
+
+.slider .slick-prev:before { 
+    content: "\e806"
+}
+
+.slider .slick-next:before { 
+    content: "\e805"
 }
 
 .filepond--root .filepond--panel-root {
