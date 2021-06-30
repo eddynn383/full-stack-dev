@@ -150,7 +150,6 @@ async function renderFormPage(res, book, form, hasError = false) {
 function saveCover(book, coverEncoded) {
     if(coverEncoded == null) return
     const cover = JSON.parse(coverEncoded);
-    // console.log(cover);
     if(cover != null && imageMimeTypes.includes(cover.type)) {
         book.coverImage = new Buffer.from(cover.data, 'base64');
         book.coverImageType = cover.type

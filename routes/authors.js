@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Author = require('../models/author');
 const Book = require('../models/book');
+const imageMimeTypes = ['image/jpeg', 'image/jpg','image/png', 'image/gif'];
+
+
 
 //All authors route
-
 router.get('/', async (req, res) => {
     let searchOptions = {}
     if (req.query.name != null && req.query.name !== '') {
@@ -13,7 +15,7 @@ router.get('/', async (req, res) => {
     try {
         const authors = await Author.find(searchOptions);
         res.render('authors/index', {
-            authors: authors, 
+            authors: authors,
             searchOptions: req.query
         });   
     } catch {
@@ -22,18 +24,22 @@ router.get('/', async (req, res) => {
 });
 
 //New authors route
-
 router.get('/new', (req, res) => {
     res.render('authors/new', {author: new Author() });
 })
 
 //Create authors route
-
 router.post('/', async (req, res) => {
     const author = new Author({
-        name: req.body.name
+        name: req.body.name,
+        title: req.body.title,
+        description: req.body.description,
+        shortDescription: shortDesc(req.body.description, 20)
     });
 
+    console.log(author.shortDescription);
+    
+    saveCover(author, req.body.photo)
     try {
         const newAuthor = await author.save();
         res.redirect(`authors/${newAuthor.id}`);
@@ -45,6 +51,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Show author route
 router.get('/:id', async (req, res) => {
     try {
         const author = await Author.findById(req.params.id);
@@ -57,7 +64,7 @@ router.get('/:id', async (req, res) => {
         res.redirect('/')
     }
 });
-
+//Edit author route
 router.get('/:id/edit', async (req, res) => {
     try {
         const author = await Author.findById(req.params.id);
@@ -67,11 +74,20 @@ router.get('/:id/edit', async (req, res) => {
     }
 });
 
+//Update author route
 router.put('/:id', async (req, res) => {
     let author
     try {
         author = await Author.findById(req.params.id);
+
         author.name = req.body.name;
+        author.title = req.body.title;
+        author.description = req.body.description;
+        author.shortDescription = shortDesc(req.body.description, 20)
+
+        if(req.body.photo != null && req.body.photo !== '') {
+            saveCover(author, req.body.photo)
+        }
         await author.save();
         res.redirect(`/authors/${author.id}`);
     } catch {
@@ -86,6 +102,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+//Delete author route
 router.delete('/:id', async (req, res) => {
     let author;
 
@@ -101,5 +118,23 @@ router.delete('/:id', async (req, res) => {
         }
     }
 });
+
+function saveCover(author, photoEncoded) {
+    if(photoEncoded == null) return
+    const photo = JSON.parse(photoEncoded);
+    if(photo != null && imageMimeTypes.includes(photo.type)) {
+        author.photoImage = new Buffer.from(photo.data, 'base64');
+        author.photoImageType = photo.type
+    }
+}
+
+function shortDesc (str, limit) {
+    let strArr = str.split(' ');
+    let shortStr = '';
+    for(let i = 0; i < limit; i++) {
+        i < limit - 1 ? shortStr += strArr[i] + " " : shortStr += strArr[i]
+    }   
+    return shortStr + '...'
+}
 
 module.exports = router;

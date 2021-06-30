@@ -1,25 +1,39 @@
 <section class="banner">
     <h1>Search Books</h1>
 </section>
-<form action="/books" method="GET">
-    <div>
-        <label>Title</label>
-        <input type="text" name="title" value="<%= searchOptions.title %> ">
+<section class="content">
+    <div class="content_inner">
+        <div class="form content_left">
+            <form action="/books" method="GET">
+                <div class="form_box">
+                    <div class="form_inner">
+                        <div class="form_item form_item--1of1">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" id="title" value="<%= searchOptions.title %>">
+                        </div>
+                        <div class="form_item form_item--1of1">
+                            <label for="publishAfter">Publish After</label>
+                            <input type="date" name="publishedAfter" id="publishAfter" value="<%= searchOptions.publishedAfter %> ">
+                        </div>
+                        <div class="form_item form_item--1of1">
+                            <label for="publishBefore">Publish Before</label>
+                            <input type="date" name="publishedBefore" id="publishBefore" value="<%= searchOptions.publishedBefore %> ">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="cards content_right">  
+        <% books.forEach(book => { %>
+            <div class="card card--1of4">
+                <div class="card_inner"> 
+                    <a href="/books/<%= book.id %>">
+                        <img src="<%= book.coverImagePath %> ">
+                    </a>
+                </div>
+            </div>
+        <% }) %> 
+        </div>
     </div>
-    <div>
-        <label>Publish After</label>
-        <input type="date" name="publishedAfter" value="<%= searchOptions.publishedAfter %> ">
-    </div>
-    <div>
-        <label>Publish Before</label>
-        <input type="date" name="publishedBefore" value="<%= searchOptions.publishedBefore %> ">
-    </div>
-    <button type="submit">Search</button>
-</form>
-<div>
-<% books.forEach(book => { %> 
-    <a href="/books/<%= book.id %>">
-        <img width="100px" height="150px" src="<%= book.coverImagePath %> ">
-    </a>
-<% }) %> 
-</div>
+</section>

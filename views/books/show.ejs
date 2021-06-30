@@ -1,13 +1,32 @@
 <section class="banner">
     <h1><%= book.title %></h1>
 </section>
-<img width="100px" height="150px" src="<%= book.coverImagePath %> ">
-<div>
-    <div><span>Author: </span><span><%= book.author.name %></span></div>
-    <div><span>Publish Date: </span><span><%= book.publishDate.toISOString().split('T')[0] %></span></div>
-    <div><span>Page Count: </span><span><%= book.pageCount %></span></div>
-    <div><span>Description: </span><span><%= book.description %></span></div>
-</div>
-<a href="/books/<%= book.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', { url: `/books/${book.id}`}) %> 
-<a href="/authors/<%= book.author.id %>">View Author</a>
+<section class="content">
+    <div class="content_inner">
+        <div class="boxes">
+            <div class="box_left">
+                <div class="box_image">
+                    <img src="<%= book.coverImagePath %>" alt="cover">
+                </div>
+            </div>
+            <div class="box_right">
+                <div class="box_row"><span>Author: </span><span><%= book.author.name %></span></div>
+                <div class="box_row"><span>Publish Date: </span><span><%= book.publishDate.toISOString().split('T')[0] %></span></div>
+                <div class="box_row"><span>Page Count: </span><span><%= book.pageCount %></span></div>
+                <div class="box_row"><span>Description: </span><span><%= book.description %></span></div>
+                <div class="box_btns">
+                    <div class="box_btn">
+                        <a href="/books/<%= book.id %>/edit" class="btn btn--primary">Edit</a>
+                    </div>
+                    <div class="box_btn">
+                        <a href="/authors/<%= book.author.id %>" class="btn btn--dark">View Author</a>
+                    </div>
+                    <div class="box_btn">
+                        <%- include('../partials/deleteForm', { url: `/books/${book.id}`, type: 'book'}) %> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

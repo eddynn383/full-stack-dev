@@ -3,26 +3,42 @@
 </section>
 <section class="content">
     <div class="content_inner">
-        <div class="form">
+        <div class="form content_left">
             <form action="/authors" method="GET">
-                <label>Name</label>
-                <input type="text" name="name" value="<%=searchOptions.name%> ">
-                <button type="submit">Search</button>
+                <div class="form_box">
+                    <div class="form_inner">
+                        <div class="form_item form_item--1of1">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" value="<%= searchOptions.name %>">
+                        </div>
+                        <button type="submit">Search</button>
+                    </div>
+                </div>
             </form>
         </div>
-        <div class="boxes">            
+        <div class="boxes content_right">            
             <% authors.forEach(author => { %> 
-                <div class="box">
+                <div class="box box--1of3">
                     <div class="box_inner">
-                        <h2 class="box_title"><%=author.name%> </h2>
-                        <div class="box_btn">
-                            <a href="/authors/<%= author.id %>" class="btn btn--primary">View</a>
+                        <div class="box_photo">
+                            <img src="<%= author.photoPath %>" alt="Photo">
+                        </div> 
+                        <div class="box_details">
+                            <h2 class="box_title"><%= author.name %> </h2>
+                            <div class="box_desc">
+                                <p><%= author.shortDescription %></p>
+                            </div>
+                            <div class="box_btns">
+                                <div class="box_btn box_btn--1of2">
+                                    <a href="/authors/<%= author.id %>" title="View this author" class="btn btn--primary">View</a>
+                                </div>
+                                <div class="box_btn box_btn--1of2">
+                                    <a href="/authors/<%= author.id %>/edit" title="Edit this author" class="btn btn--dark">Edit</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="box_btn">
-                            <a href="/authors/<%= author.id %>/edit" class="btn btn--dark">Edit</a>
-                        </div>
-                        <div class="box_btn">
-                            <%- include('../partials/deleteForm', { url: `/authors/${author.id}`}) %> 
+                        <div class="box_delete">
+                            <%- include('../partials/deleteForm', { url: `/authors/${author.id}`, type: 'author'}) %> 
                         </div>
                     </div>
                 </div>

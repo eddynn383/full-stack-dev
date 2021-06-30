@@ -1,8 +1,20 @@
 <section class="banner">
     <h1>New Book</h1>
 </section>
-<form action="/books" method="POST">
-    <%-include('_form_fields') %> 
-    <a href="/books">Cancel</a>
-    <button type="submit">Create</button>
-</form> 
+<section class="content">
+    <div class="content_inner">
+        <div class="form">
+            <form action="/books" method="POST">
+                <div class="form_box">
+                    <%-include('_form_fields') %> 
+                    <div class="box_btn">
+                        <button type="submit" class="btn btn--primary">Create</button>
+                    </div>
+                    <div class="box_btn">
+                        <a href="/books" class="btn btn--dark">Cancel</a>
+                    </div>
+                </div>
+            </form> 
+        </div>
+    </div>
+</section>
