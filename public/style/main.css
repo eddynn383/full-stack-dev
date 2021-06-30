@@ -486,11 +486,19 @@ header .nav--main li a:hover {
     vertical-align: top;
 }
 
-.box_title {
+.box_name {
     width: 100%;
     margin-top: 0;
+    margin-bottom: 10px;
     color: #fff;
     font-size: 30px;
+}
+
+.box_title {
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
 .box_desc {
@@ -659,6 +667,10 @@ header .nav--main li a:hover {
 .content--details .box {
     padding-left: 0;
     margin-bottom: 0;
+}
+
+.slider h4 {
+    text-align: center;
 }
 
 .slider .slick-list {
