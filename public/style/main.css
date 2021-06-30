@@ -406,6 +406,10 @@ header .nav--main li a:hover {
     }
 }
 
+.box_right h2 {
+    margin-top: 0; 
+}
+
 .box_inner {
     position: relative;
     background-color: #2f2f2f;
