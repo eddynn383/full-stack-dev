@@ -1,4 +1,5 @@
 <div class="form_inner"> 
+    <div class="form_error"><%- include('../partials/errorMessage.ejs') %></div>
     <div class="form_item form_item--1of1">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" value="<%= book.title %>">

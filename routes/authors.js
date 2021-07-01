@@ -8,7 +8,7 @@ const imageMimeTypes = ['image/jpeg', 'image/jpg','image/png', 'image/gif'];
 router.get('/', async (req, res) => {
     let searchOptions = {}
     if (req.query.name != null && req.query.name !== '') {
-        searchOptions.name = new RegExp(req.query.name), 'i';
+        searchOptions.name = new RegExp(req.query.name, 'i');
     }
     try {
         const authors = await Author.find(searchOptions);
@@ -127,10 +127,15 @@ function saveCover(author, photoEncoded) {
 function shortDesc (str, limit) {
     let strArr = str.split(' ');
     let shortStr = '';
-    for(let i = 0; i < limit; i++) {
-        i < limit - 1 ? shortStr += strArr[i] + " " : shortStr += strArr[i]
-    }   
-    return shortStr + '...'
+    
+    if(strArr.length > limit) {
+        for(let i = 0; i < limit; i++) {
+            i < limit - 1 ? shortStr += strArr[i] + " " : shortStr += strArr[i]
+        }
+        return shortStr + '...'
+    } else {
+        return str
+    }
 }
 
 module.exports = router;

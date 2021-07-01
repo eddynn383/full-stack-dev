@@ -7,10 +7,10 @@ const authorSchema = new mongoose.Schema({
         required: true
     },
     title: {
-        type: String, 
+        type: String
     },
     description: {
-        type: String, 
+        type: String
     },
     shortDescription: {
         type: String,
