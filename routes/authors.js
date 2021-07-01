@@ -4,8 +4,6 @@ const Author = require('../models/author');
 const Book = require('../models/book');
 const imageMimeTypes = ['image/jpeg', 'image/jpg','image/png', 'image/gif'];
 
-
-
 //All authors route
 router.get('/', async (req, res) => {
     let searchOptions = {}
@@ -36,8 +34,6 @@ router.post('/', async (req, res) => {
         description: req.body.description,
         shortDescription: shortDesc(req.body.description, 20)
     });
-
-    console.log(author.shortDescription);
     
     saveCover(author, req.body.photo)
     try {

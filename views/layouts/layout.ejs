@@ -22,11 +22,19 @@
 </head>
 <body>
     <div class="layout">
-        <%- include('../partials/header.ejs') %> 
-        <%- include('../partials/nav.ejs', {className: 'nav--mobile'}) %> 
-        <%- include('../partials/errorMessage.ejs') %> 
-        <%- body %>
-        <%- include('../partials/footer.ejs') %> 
+        <div class="layout_inner">
+            <header>
+                <%- include('../partials/header.ejs') %> 
+            </header>
+            <main>
+                <%- include('../partials/nav.ejs', {className: 'nav--mobile'}) %> 
+                <%- include('../partials/errorMessage.ejs') %> 
+                <%- body %>
+            </main>
+            <footer>
+                <%- include('../partials/footer.ejs') %>
+            </footer>
+        </div>
     </div>
 </body>
 </html>

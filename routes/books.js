@@ -17,10 +17,8 @@ router.get('/', async (req, res) => {
     if (req.query.publishedAfter != null && req.query.publishedAfter != '') {
         query = query.gte('publishDate', new RegExp(req.query.publishedAfter))
     }
-    // console.log(query);
     try {
         const books = await query.exec();
-        // console.log(books);
         res.render('books/index', {
             books: books, 
             searchOptions: req.query
@@ -46,7 +44,6 @@ router.post('/', async (req, res) => {
         pageCount: parseInt(req.body.pageCount),
         description: req.body.description
     })
-    // console.log(book.publishDate)
 
     saveCover(book, req.body.cover)
     try {
