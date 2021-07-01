@@ -4,13 +4,11 @@
             <a href="/"><img src="/assets/books-logo.png" alt="Logo"></a>
             <span>Bookmania</span>
         </div>
-        <nav class="nav nav--main">
-            <ul>
-                <li><a href="/authors">Authors</a></li>
-                <li><a href="/authors/new">Add Author</a></li>  
-                <li><a href="/books">Books</a></li>
-                <li><a href="/books/new">Add Books</a></li>  
-            </ul>
-        </nav>
+        <%- include('../partials/nav.ejs', {className: 'nav--desktop'}) %>
+        <div class="header_toggle">
+            <button class="header_toggle-btn">
+                <span class="header_toggle-bar"></span>
+            </button>
+        </div> 
     </div>
 </header>

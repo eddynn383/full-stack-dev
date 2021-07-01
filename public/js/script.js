@@ -1,3 +1,7 @@
+$('.header_toggle-btn').on('click', function() {
+    $('.layout').toggleClass('js--show');
+});
+
 $(document).ready(function(){
     $('.slider_items').slick({
         infinite: true,

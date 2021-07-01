@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmania</title>
     <link rel="stylesheet" href="https://unpkg.com/filepond@^4/dist/filepond.css"  />
     <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -18,11 +19,11 @@
     <script defer type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script defer type="text/javascript" src="/js/script.js"></script>
-    <title>My Brary</title>
 </head>
 <body>
-    <div class="layout layout">
+    <div class="layout">
         <%- include('../partials/header.ejs') %> 
+        <%- include('../partials/nav.ejs', {className: 'nav--mobile'}) %> 
         <%- include('../partials/errorMessage.ejs') %> 
         <%- body %>
         <%- include('../partials/footer.ejs') %> 

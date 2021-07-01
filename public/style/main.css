@@ -36,12 +36,22 @@ h4 {
     font-size: 28px;
 }
 
+a {
+    color: var(--color-primary);
+}
+
 a:hover {
     color: var(--color-primary-light);
 }
 
 img {
     max-width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .btn {
@@ -86,6 +96,15 @@ img {
     padding-top: 100px;
 }
 
+.layout.js--show {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
 header {
     position: fixed;
     top: 0;
@@ -124,33 +143,162 @@ header .header_logo span {
     text-align: center;
 }
 
-header .nav--main {
+header .nav--desktop {
     width: calc(100% - 100px);
 }
 
-header .nav--main ul {
+header .nav--desktop ul {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 0;
-    margin: 0;
     height: 100%;
 }
 
-header .nav--main li {
+header .nav--desktop li {
     display: inline-block;
     padding-right: 20px;
 }
 
-header .nav--main li a {
+header .nav--desktop li a {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
     text-transform: uppercase;
 }
 
-header .nav--main li a:hover {
-    color: #5055e8;
+header .nav--desktop li a:hover {
+    color: var(--color-primary-light);
+}
+
+header .header_toggle,
+.nav--mobile {
+    display: none;
+}
+
+.nav--mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    background-color: #212121;
+    transform: translateY(-100%);
+    transition: transform .3s ease-in-out;
+    z-index: 2;
+}
+
+.js--show .nav--mobile {
+    transform: translateY(0);
+}
+
+.nav--mobile ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 50px 0;
+    height: 100%;
+}
+
+.nav--mobile li {
+    padding-bottom: 10px;
+}
+
+.nav--mobile a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header .header_toggle {
+    width: calc(100% - 100px);
+}
+
+header .header_toggle-btn {
+    position: relative;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+    background: none;
+}
+
+header .header_toggle-bar,
+header .header_toggle-bar:before,
+header .header_toggle-bar:after {
+    position: absolute;
+    width: 40px;
+    height: 4px;
+    transition-timing-function: ease;
+    transition-duration: .15s;
+    transition-property: transform;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+header .header_toggle-bar:before,
+header .header_toggle-bar:after {
+    display: block;
+    content: "";
+}
+
+header .header_toggle-bar {
+    display: block;
+    margin-top: -2px;
+    top: auto;
+    bottom: 0;
+    transition-delay: .13s;
+    transition-timing-function: cubic-bezier(.55,.055,.675,.19);
+    transition-duration: .13s;
+}
+
+header .header_toggle-bar:before {
+    top: -10px;
+    transition: top .12s cubic-bezier(.33333,.66667,.66667,1) .2s, transform .13s cubic-bezier(.55,.055,.675,.19);
+}
+
+header .header_toggle-bar:after {
+    top: -20px;
+    bottom: -10px;
+    transition: top .2s cubic-bezier(.33333,.66667,.66667,1) .2s,opacity .1s linear;
+}
+
+.js--show header .header_toggle-bar {
+    transition-delay: .22s;
+    transition-timing-function: cubic-bezier(.215,.61,.355,1);
+    transform: translate3d(0,-10px,0) rotate(-45deg);
+}
+
+.js--show header .header_toggle-bar:before {
+    top: 0;
+    transition: top .1s cubic-bezier(.33333,0,.66667,.33333) .16s,transform .13s cubic-bezier(.215,.61,.355,1) .25s;
+    transform: rotate(-90deg);
+}
+
+.js--show header .header_toggle-bar:after {
+    top: 0;
+    transition: top .2s cubic-bezier(.33333,0,.66667,.33333),opacity .1s linear .22s;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+    header .nav--desktop {
+        display: none;
+    }
+    header .header_toggle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .nav--mobile { 
+        display: block;
+    }
 }
 
 .banner {
